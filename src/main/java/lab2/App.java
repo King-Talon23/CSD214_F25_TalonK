@@ -5,8 +5,8 @@ import lab2.pojos.*;
 import java.util.*;
 
 public class App {
-    private final Scanner scanner = new Scanner(System.in);
-    private final ArrayList<SaleableItem> inventory = new ArrayList<>();
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final ArrayList<SaleableItem> inventory = new ArrayList<>();
 
     public void run() {
         boolean running = true;
@@ -15,9 +15,9 @@ public class App {
             int choice = getIntInput("Enter choice: ");
 
             switch (choice) {
-                case 1 -> addItemsMenu();
-                case 2 -> deleteItem();
-                case 3 -> editItem();
+                case 1 -> addItemsMenu(inventory);
+                case 2 -> deleteItem(inventory, false);
+                case 3 -> editItem(inventory);
                 case 4 -> sellItem();
                 case 5 -> listItems();
                 case 99 -> {
@@ -40,7 +40,7 @@ public class App {
         System.out.println("***********************");
     }
 
-    private void addItemsMenu() {
+    public void addItemsMenu(List<SaleableItem> inventory) {
         boolean inAddMenu = true;
         while (inAddMenu) {
             System.out.println("\nAdd an item");
@@ -84,7 +84,7 @@ public class App {
         }
     }
 
-    private void editItem() {
+    public void editItem(List<SaleableItem> inventory) {
         if (inventory.isEmpty()) {
             System.out.println("\nNo items available to edit\n");
             return;
@@ -106,24 +106,30 @@ public class App {
         }
     }
 
-    private void deleteItem() {
+    public static void deleteItem(List<SaleableItem> inventory, Boolean deleteFirstItem) {
+        int index;
+        // both passable arguments are purely for testing purposes and not utilized outside of that
         if (inventory.isEmpty()) {
             System.out.println("\nNo items to delete\n");
             return;
         }
 
         listItems();
-        int index = getIntInput("Enter item number to delete: ") - 1;
-        if (index < 0 || index >= inventory.size()) {
-            System.out.println("\nInvalid item number\n");
-            return;
+        if (!deleteFirstItem) {
+             index = getIntInput("Enter item number to delete: ") - 1;
+            if (index < 0 || index >= inventory.size()) {
+                System.out.println("\nInvalid item number\n");
+                return;
+            }
+        } else {
+            index = 0;
         }
 
         inventory.remove(index);
         System.out.println("\nItem deleted successfully!\n");
     }
 
-    private void sellItem() {
+    public void sellItem() {
         if (inventory.isEmpty()) {
             System.out.println("\nyou have nothing for sale\n");
             return;
@@ -141,7 +147,7 @@ public class App {
         inventory.remove(index);
     }
 
-    private void listItems() {
+    private static void listItems() {
         if (inventory.isEmpty()) {
             System.out.println("\nNo items to list\n");
             return;
@@ -153,7 +159,7 @@ public class App {
         }
         System.out.println("-----------------------\n");
     }
-    private int getIntInput(String prompt) {
+    private static int getIntInput(String prompt) {
         System.out.print(prompt);
         while (!scanner.hasNextInt()) {
             System.out.print("Invalid input. Enter a number: ");

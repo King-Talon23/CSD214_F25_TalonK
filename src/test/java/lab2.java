@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
+import lab2.App;
 
 class lab2 {
         private List<SaleableItem> inventory;
@@ -89,7 +90,8 @@ class lab2 {
         inventory.add(mag);
 
         int initialSize = inventory.size();
-        SaleableItem removed = inventory.remove(0);
+        SaleableItem removed = inventory.get(0);
+        App.deleteItem(inventory, true);
 
 
         assertEquals(initialSize - 1, inventory.size(), "Inventory size should decrease by 1 after deletion");

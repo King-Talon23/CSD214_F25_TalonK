@@ -1,9 +1,10 @@
 
 import com.github.javafaker.Faker;
 import lab2.pojos.*;
-
-
-public class util {
+import java.util.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+public class utility {
     private static Faker faker = new Faker();
     private static com.github.javafaker.Book fakeBook = faker.book();
     private static com.github.javafaker.Number number = faker.number();
@@ -15,15 +16,10 @@ public class util {
         double price = number.randomDouble(2, 10, 100);
         int copies = number.numberBetween(1, 20);
         String author = fakeBook.author();
-        String isbn = code.isbn10();
-        String description = "Book: " + fakeBook.genre();
         return new Book(
-                UUID.randomUUID().getMostSignificantBits() & Long.MAX_VALUE,
                 title,
                 price,
                 copies,
-                isbn,
-                description,
                 author
         );
     }
@@ -32,26 +28,20 @@ public class util {
         String title = fakeBook.title();
         double price = number.randomDouble(2, 10, 100);
         int copies = number.numberBetween(1, 20);
-        String author = fakeBook.author();
-        String isbn = code.isbn10();
-        String description = "Magazine: " + fakeBook.genre();
+        LocalDate date = LocalDate.now();
         return new Magazine(
                 title,
                 price,
                 copies,
-                isbn,
-                description,
-                copies,
-                localDate.now()
+                date
         );
     }
 
     public static DiscMag getFakeDiscMag() {
         Magazine dm = getFakeMagazine();
-        var random = new java.util.Random();
         return new DiscMag(
                 dm,
-                random.nextBoolean()
+                true
         );
     }
 
@@ -59,7 +49,7 @@ public class util {
         var random = new java.util.Random();
         return new Ticket(
                 "This is a ticket for cool event # " + random.nextInt(),
-                util.getFakeDoubleBetween(1, 100)
+                utility.getFakeDoubleBetween(1, 100)
         );
     }
 

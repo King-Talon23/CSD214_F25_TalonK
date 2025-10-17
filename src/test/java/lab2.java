@@ -1,6 +1,7 @@
 import lab2.pojos.SaleableItem;
 import static org.junit.jupiter.api.Assertions.*;
 import lab2.pojos.*;
+import lab2.pojos.fakes.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
@@ -16,18 +17,18 @@ class lab2 {
 
         @Test
         void testAddFakeBook() {
-            Book book = utility.getFakeBook();
+            FakeBook book = utility.getFakeBook();
             inventory.add(book);
 
             assertFalse(inventory.isEmpty(), "Inventory should not be empty after adding a book");
-            assertTrue(inventory.get(0) instanceof Book, "First item should be a Book");
+            assertTrue(inventory.get(0) instanceof FakeBook, "First item should be a Book");
             assertNotNull(book.getTitle(), "Book title should not be null");
             assertTrue(book.getPrice() > 0, "Book price should be positive");
         }
 
         @Test
         void testAddFakeMagazine() {
-            Magazine mag = utility.getFakeMagazine();
+            FakeMagazine mag = utility.getFakeMagazine();
             inventory.add(mag);
 
             assertEquals(1, inventory.size());
@@ -37,11 +38,11 @@ class lab2 {
 
         @Test
         void testAddFakeDiscMag() {
-            DiscMag discMag = utility.getFakeDiscMag();
+            FakeDiscMag discMag = utility.getFakeDiscMag();
             inventory.add(discMag);
 
             assertEquals(1, inventory.size());
-            assertTrue(inventory.get(0) instanceof DiscMag);
+            assertTrue(inventory.get(0) instanceof FakeDiscMag);
         }
 
         @Test
@@ -56,7 +57,7 @@ class lab2 {
 
         @Test
         void testEditBook() {
-            Book book = utility.getFakeBook();
+            FakeBook book = utility.getFakeBook();
             String oldTitle = book.getTitle();
             double oldPrice = book.getPrice();
 
@@ -82,8 +83,8 @@ class lab2 {
     @Test
     void testDeleteItem() {
         List<SaleableItem> inventory = new ArrayList<>();
-        Book book = utility.getFakeBook();
-        Magazine mag = utility.getFakeMagazine();
+        FakeBook book = utility.getFakeBook();
+        FakeMagazine mag = utility.getFakeMagazine();
         inventory.add(book);
         inventory.add(mag);
 

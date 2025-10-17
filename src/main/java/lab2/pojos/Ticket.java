@@ -12,6 +12,8 @@ public class Ticket implements SaleableItem, Serializable {
     public Ticket() {}
     public Ticket(int id, String description, double price) { this.id = id; this.description = description; this.price = price; }
 
+
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

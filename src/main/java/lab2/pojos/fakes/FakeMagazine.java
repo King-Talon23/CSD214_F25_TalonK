@@ -1,15 +1,18 @@
-package lab2.pojos;
+package lab2.pojos.fakes;
+
+import lab2.pojos.Publication;
 
 import java.time.LocalDate;
 
 
-public class Magazine extends Publication{
+public class FakeMagazine extends Publication {
     private int orderQty;
     private LocalDate currentIssue;
 
 
-    public Magazine() { super(); }
 
+    public FakeMagazine(String title, double price, int copies, LocalDate date) {
+    }
 
 
     public int getOrderQty() { return orderQty; }

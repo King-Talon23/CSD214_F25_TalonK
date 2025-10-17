@@ -1,11 +1,13 @@
-package lab2.pojos;
+package lab2.pojos.fakes;
 
-public class Book extends Publication {
+import lab2.pojos.Publication;
+
+public class FakeBook extends Publication {
     private String author;
 
 
-    public Book() { super(); }
-
+    public FakeBook(String title, double price, int copies, String author) {
+    }
 
 
     public String getAuthor() { return author; }

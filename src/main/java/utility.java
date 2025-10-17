@@ -1,6 +1,7 @@
 
 import com.github.javafaker.Faker;
 import lab2.pojos.*;
+import lab2.pojos.fakes.*;
 import java.util.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,12 +12,12 @@ public class utility {
     private static com.github.javafaker.Code code = faker.code();
 
 
-    public static Book getFakeBook() {
+    public static FakeBook getFakeBook() {
         String title = fakeBook.title();
         double price = number.randomDouble(2, 10, 100);
         int copies = number.numberBetween(1, 20);
         String author = fakeBook.author();
-        return new Book(
+        return new FakeBook(
                 title,
                 price,
                 copies,
@@ -24,12 +25,12 @@ public class utility {
         );
     }
 
-    public static Magazine getFakeMagazine() {
+    public static FakeMagazine getFakeMagazine() {
         String title = fakeBook.title();
         double price = number.randomDouble(2, 10, 100);
         int copies = number.numberBetween(1, 20);
         LocalDate date = LocalDate.now();
-        return new Magazine(
+        return new FakeMagazine(
                 title,
                 price,
                 copies,
@@ -37,9 +38,9 @@ public class utility {
         );
     }
 
-    public static DiscMag getFakeDiscMag() {
-        Magazine dm = getFakeMagazine();
-        return new DiscMag(
+    public static FakeDiscMag getFakeDiscMag() {
+        FakeMagazine dm = getFakeMagazine();
+        return new FakeDiscMag(
                 dm,
                 true
         );
@@ -47,21 +48,18 @@ public class utility {
 
     public static Ticket getFakeTicket() {
         var random = new java.util.Random();
-        return new Ticket(
+        return new Ticket(utility.getFakeIntBetween(1, 100),
                 "This is a ticket for cool event # " + random.nextInt(),
-                utility.getFakeDoubleBetween(1, 100)
+                utility.getFakedoubleBetween(1,100)
         );
     }
 
 
-    public static int getFakeIntegerBetween(int min, int max) {
+    public static int getFakeIntBetween(int min, int max) {
         return number.numberBetween(min, max);
     }
-
-
-    public static double getFakeDoubleBetween(int min, int max) {
-        return number.randomDouble(2, 10, 100);
+    public static double getFakedoubleBetween(int min, int max) {
+        return number.numberBetween(min, max);
     }
 }
-
 

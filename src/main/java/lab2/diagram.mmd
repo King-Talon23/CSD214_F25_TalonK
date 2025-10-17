@@ -1,0 +1,103 @@
+classDiagram
+
+%% Interfaces and Abstract Classes
+    class SaleableItem {
+        <<interface>>
+        +sellItem()
+        +getPrice()
+    }
+
+    class Serializable {
+        <<interface>>
+    }
+
+    class Editable {
+        <<abstract>>
+        -Scanner input
+        +String getInput(String)
+        +int getInputInt(String)
+        +double getInputDouble(String)
+        +boolean getInputBoolean(String)
+        +Date getInputDate(Date)
+        +Enum getInputEnum(String)
+        +edit()
+        +initialize()
+    }
+
+    class Publication {
+        <<abstract>>
+        -String title
+        -double price
+        -int copies
+        +Publication()
+        +Publication(String title, double price, int copies)
+        +getPrice()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+
+    class Book {
+        -String author
+        +Book()
+        +Book(String author)
+        +Book(String author, String title, double price, int copies)
+        +edit()
+        +initialize()
+        +sellItem()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+
+    class Magazine {
+        -int orderQty
+        -Date currentIssue
+        +Magazine()
+        +Magazine(int orderQty, Date currentIssue, String title, double price, int copies)
+        +edit()
+        +initialize()
+        +sellItem()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+
+    class DiscMag {
+        -boolean hasDisc
+        +DiscMag()
+        +DiscMag(boolean hasDisc, int orderQty, Date currentIssue, String title, double price, int copies)
+        +edit()
+        +initialize()
+        +sellItem()
+        +toString()
+        +equals()
+        +hashCode()
+    }
+
+    class Ticket {
+        -String description
+        -double price
+        +Ticket()
+        +Ticket(String description, double price)
+        +sellItem()
+    }
+
+    class CashTill {
+        -double runningTotal
+        +CashTill()
+        +sellItem(SaleableItem item)
+        +showTotal()
+    }
+
+%% Relationships
+    Editable <|.. Publication
+    Publication <|.. Book
+    Publication <|.. Magazine
+    Magazine <|.. DiscMag
+    Publication ..|> SaleableItem
+    Ticket ..|> SaleableItem
+    Ticket ..|> Serializable
+    SaleableItem <|.. Serializable
+    CashTill ..|> Serializable
+    CashTill ..|> SaleableItem

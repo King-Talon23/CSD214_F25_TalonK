@@ -1,6 +1,6 @@
 package lab2.pojos;
 
-public interface saleableItem {
+public interface SaleableItem {
     double getPrice();
     void sellItem();
 }

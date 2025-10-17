@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-public abstract class publication extends editable implements saleableItem, Serializable {
+public abstract class Publication extends Editable implements SaleableItem, Serializable {
     private String title;
     private double price;
     private int copies;
 
 
-    public publication() {}
-    public publication(String title, double price, int copies) {
+    public Publication() {}
+    public Publication(String title, double price, int copies) {
         this.title = title; this.price = price; this.copies = copies;
     }
 
@@ -37,8 +37,8 @@ public abstract class publication extends editable implements saleableItem, Seri
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof publication)) return false;
-        publication p = (publication) o;
+        if (!(o instanceof Publication)) return false;
+        Publication p = (Publication) o;
         return Double.compare(p.price, price) == 0 && copies == p.copies && Objects.equals(title, p.title);
     }
 

@@ -3,15 +3,14 @@ package lab2.pojos;
 import java.io.Serializable;
 
 
-public class ticket implements saleableItem, Serializable {
+public class Ticket implements SaleableItem, Serializable {
     private int id;
     private String description;
     private double price;
 
 
-    public ticket() {}
-    public ticket(int id, String description, double price) { this.id = id; this.description = description; this.price = price; }
-
+    public Ticket() {}
+    public Ticket(int id, String description, double price) { this.id = id; this.description = description; this.price = price; }
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

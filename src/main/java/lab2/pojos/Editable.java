@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 
-public abstract class editable {
+public abstract class Editable {
     protected int id;
     protected static final Scanner SC = new Scanner(System.in);
     protected static final DateTimeFormatter LOCAL_DATE_FORMAT = DateTimeFormatter.ofPattern("dd-MM-yyyy");

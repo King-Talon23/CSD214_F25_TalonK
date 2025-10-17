@@ -1,11 +1,11 @@
 package lab2.pojos;
 
 
-public class cashTill {
+public class CashTill {
     private double runningTotal = 0.0;
 
 
-    public void sellItem(saleableItem item) {
+    public void sellItem(SaleableItem item) {
         if (item == null) return;
         System.out.println("Processing sale...");
         item.sellItem();

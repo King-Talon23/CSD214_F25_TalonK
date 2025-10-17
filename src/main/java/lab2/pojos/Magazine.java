@@ -3,12 +3,12 @@ package lab2.pojos;
 import java.time.LocalDate;
 
 
-public class magazine extends publication {
+public class Magazine extends Publication{
     private int orderQty;
     private LocalDate currentIssue;
 
 
-    public magazine() { super(); }
+    public Magazine() { super(); }
 
 
     public int getOrderQty() { return orderQty; }

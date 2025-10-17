@@ -1,6 +1,6 @@
 package lab2.pojos;
 
-public class discMag extends magazine {
+public class DiscMag extends Magazine {
     private boolean hasDisc;
 
 

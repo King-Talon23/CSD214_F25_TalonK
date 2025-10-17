@@ -1,11 +1,11 @@
 package lab2.pojos;
 
-public class book extends publication {
+public class Book extends Publication {
     private String author;
 
 
-    public book() { super(); }
-    public book(String title, double price, int copies, String author) {
+    public Book() { super(); }
+    public Book(String title, double price, int copies, String author) {
         super(title, price, copies);
         this.author = author;
     }

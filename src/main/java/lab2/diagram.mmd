@@ -50,54 +50,76 @@ classDiagram
         +hashCode()
     }
 
-    class Magazine {
-        -int orderQty
-        -Date currentIssue
-        +Magazine()
-        +Magazine(int orderQty, Date currentIssue, String title, double price, int copies)
-        +edit()
-        +initialize()
+    class App {
+        -String menu
+        -ArrayList<SaleableItem> saleableItems
+        -int currentItem
+        -Scanner input
+        -PrintStream out
+        +App()
+        +run()
+        +boolean findItemExists(SaleableItem item)
+        +SaleableItem findItem(SaleableItem item)
+        +editItem()
+        +editItem(item: Editable)
+        +deleteItem()
+        +populate()
+        +listAny()
+        +SaleableItem getItem(SaleableItem item)
         +sellItem()
-        +toString()
-        +equals()
-        +hashCode()
+        +listI(Object objecft)
+        +addItem()
+        +addItem(SaleableItem item)
     }
 
-    class DiscMag {
-        -boolean hasDisc
-        +DiscMag()
-        +DiscMag(boolean hasDisc, int orderQty, Date currentIssue, String title, double price, int copies)
-        +edit()
-        +initialize()
-        +sellItem()
-        +toString()
-        +equals()
-        +hashCode()
-    }
+class Magazine {
+-int orderQty
+-Date currentIssue
++Magazine()
++Magazine(int orderQty, Date currentIssue, String title, double price, int copies)
++edit()
++initialize()
++sellItem()
++toString()
++equals()
++hashCode()
+}
 
-    class Ticket {
-        -String description
-        -double price
-        +Ticket()
-        +Ticket(String description, double price)
-        +sellItem()
-    }
+class DiscMag {
+-boolean hasDisc
++DiscMag()
++DiscMag(boolean hasDisc, int orderQty, Date currentIssue, String title, double price, int copies)
++edit()
++initialize()
++sellItem()
++toString()
++equals()
++hashCode()
+}
 
-    class CashTill {
-        -double runningTotal
-        +CashTill()
-        +sellItem(SaleableItem item)
-        +showTotal()
-    }
+class Ticket {
+-String description
+-double price
++Ticket()
++Ticket(String description, double price)
++sellItem()
+}
+
+class CashTill {
+-double runningTotal
++CashTill()
++sellItem(SaleableItem item)
++showTotal()
+}
 
 %% Relationships
-    Editable <|.. Publication
-    Publication <|.. Book
-    Publication <|.. Magazine
-    Magazine <|.. DiscMag
-    Publication ..|> SaleableItem
-    Ticket ..|> SaleableItem
-    Ticket ..|> Serializable
-    SaleableItem <|.. Serializable
-    CashTill ..|> Serializable
-    CashTill ..|> SaleableItem
+Editable <|.. Publication
+Publication <|.. Book
+Publication <|.. Magazine
+Magazine <|.. DiscMag
+Publication ..|> SaleableItem
+Ticket ..|> SaleableItem
+Ticket ..|> Serializable
+SaleableItem <|.. Serializable
+CashTill ..|> Serializable
+CashTill ..|> SaleableItem

@@ -77,38 +77,38 @@ public class  BookEntity extends PublicationEntity {
         setTitle(super.getInput(""));
 
         System.out.print("Enter author: ");
-        setAuthor(super.getInput(""));
+setAuthor(super.getInput(""));
 
         System.out.print("Enter ISBN-10: ");
-        setIsbn_10(super.getInput(""));
+setIsbn_10(super.getInput(""));
 
         System.out.print("Enter description: ");
-        setDescription(super.getInput(""));
+setDescription(super.getInput(""));
 
         System.out.print("Enter price: ");
-        setPrice(super.getInput(0.0));
+setPrice(super.getInput(0.0));
 
         System.out.print("Enter copies: ");
-        setCopies(super.getInput(0));
+setCopies(super.getInput(0));
         System.out.println("Book initialized.");
     }
 
 
-    @Override
-    public void sellItem() {
-        if (getCopies() > 0) {
-            setCopies(getCopies() - 1);
-            System.out.println("Sold Book: '" + getTitle() + "' by " + author + ". Copies left: " + getCopies());
-        } else {
-            System.out.println("Book '" + getTitle() + "' is out of stock.");
-        }
+@Override
+public void sellItem() {
+    if (getCopies() > 0) {
+        setCopies(getCopies() - 1);
+        System.out.println("Sold Book: '" + getTitle() + "' by " + author + ". Copies left: " + getCopies());
+    } else {
+        System.out.println("Book '" + getTitle() + "' is out of stock.");
     }
-    @Override
-    public String toString() {
-        return "BookEntity{" +
-                "author='" + author + '\'' +
-                "} " + super.toString();
-    }
+}
+@Override
+public String toString() {
+    return "BookEntity{" +
+            "author='" + author + '\'' +
+            "} " + super.toString();
+}
 
 
 }

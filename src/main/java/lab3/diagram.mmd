@@ -1,0 +1,131 @@
+classDiagram
+%% Interfaces
+    class SaleableItem {
+        <<interface>>
+        +sellItem()
+        +getPrice()
+    }
+
+    class Serializable {
+        <<interface>>
+    }
+
+    class Editable {
+        <<abstract>>
+        -Scanner input
+        +String getInput(String)
+        +int getInputInt(String)
+        +double getInputDouble(String)
+        +boolean getInputBoolean(String)
+        +Date getInputDate(Date)
+        +Enum getInputEnum(String)
+        +edit()
+        +initialize()
+    }
+
+%% Abstract classes
+    class ProductEntity {
+        <<abstract>>
+        -Long id
+        -String productId
+        +getId()
+        +setId(Long)
+        +getProductId()
+        +setProductId(String)
+        +edit()
+        +initialize()
+        +sellItem()
+        +getPrice()
+    }
+
+    class PublicationEntity {
+        <<abstract>>
+        -String title
+        -double price
+        -int copies
+        -String isbn_10
+        -String description
+        +getTitle()
+        +setTitle(String)
+        +getPrice()
+        +setPrice(double)
+        +getCopies()
+        +setCopies(int)
+        +getIsbn_10()
+        +setIsbn_10(String)
+        +getDescription()
+        +setDescription(String)
+    }
+
+%% Concrete classes
+    class BookEntity {
+        -String author
+        +getAuthor()
+        +setAuthor(String)
+        +edit()
+        +initialize()
+        +sellItem()
+    }
+
+    class ComicBookEntity {
+        -String illustrator
+        -int year
+        -String publisher
+        +getIllustrator()
+        +setIllustrator(String)
+        +getYear()
+        +setYear(int)
+        +getPublisher()
+        +setPublisher(String)
+        +edit()
+        +initialize()
+        +sellItem()
+    }
+
+    class PencilEntity {
+        -String name
+        -String color
+        -double price
+        +getName()
+        +setName(String)
+        +getColor()
+        +setColor(String)
+        +getPrice()
+        +setPrice(double)
+        +edit()
+        +initialize()
+        +sellItem()
+    }
+
+    class TicketEntity {
+        -String description
+        -double price
+        +getDescription()
+        +setDescription(String)
+        +getPrice()
+        +setPrice(double)
+        +edit()
+        +initialize()
+        +sellItem()
+    }
+
+%% Relationships
+    Editable <|.. ProductEntity
+    Editable <|.. PublicationEntity
+
+    ProductEntity <|-- PencilEntity
+    ProductEntity <|-- TicketEntity
+    ProductEntity <|-- PublicationEntity
+
+    PublicationEntity <|-- BookEntity
+    PublicationEntity <|-- ComicBookEntity
+
+    ProductEntity ..|> SaleableItem
+    PublicationEntity ..|> SaleableItem
+    TicketEntity ..|> SaleableItem
+    PencilEntity ..|> SaleableItem
+
+    ProductEntity ..|> Serializable
+    PublicationEntity ..|> Serializable
+    TicketEntity ..|> Serializable
+    PencilEntity ..|> Serializable

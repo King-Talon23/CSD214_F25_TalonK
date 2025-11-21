@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "pencils")
 public class PencilEntity extends ProductEntity {
 
     private String name;

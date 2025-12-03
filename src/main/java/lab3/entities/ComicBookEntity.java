@@ -12,8 +12,8 @@ public class ComicBookEntity extends PublicationEntity {
 
     public ComicBookEntity() {}
 
-    public ComicBookEntity(String title, double price, int copies, String publisher, int year, String illustrator) {
-        super(title, price, copies, publisher, year);
+    public ComicBookEntity(String title, double price, int copies, String isbn, String description, String publisher, int year, String illustrator) {
+        super(title, price, copies, isbn, description);
         this.illustrator = illustrator;
         this.year = year;
         this.publisher = publisher;
@@ -41,7 +41,7 @@ public class ComicBookEntity extends PublicationEntity {
     }
 
     public void setPublisher(String publisher) {
-        ths.publicsher = publisher;
+        this.publisher = publisher;
     }
 
 

@@ -94,7 +94,7 @@ class lab2 {
         App.deleteItem(inventory, true);
 
 
-        assertEquals(initialSize - 1, inventory.size(), "Inventory size should decrease by 1 after deletion");
+        assertEquals(initialSize - 1, inventory.size(), "Inventory size should smaller");
         assertFalse(inventory.contains(removed), "Deleted item should no longer be in inventory");
         assertEquals(mag, inventory.get(0), "Remaining item should be the second one originally added");
     }

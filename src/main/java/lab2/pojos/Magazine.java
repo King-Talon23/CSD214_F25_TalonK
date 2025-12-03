@@ -10,8 +10,6 @@ public class Magazine extends Publication{
 
     public Magazine() { super(); }
 
-
-
     public int getOrderQty() { return orderQty; }
     public void setOrderQty(int orderQty) { this.orderQty = orderQty; }
 
@@ -36,7 +34,10 @@ public class Magazine extends Publication{
 
     @Override
     public void sellItem() {
-        if (getCopies() > 0) { setCopies(getCopies() - 1); System.out.println("Sold magazine: " + getTitle()); }
-        else System.out.println("Magazine out of stock: " + getTitle());
+        if (this.getCopies() > 0) {
+            setCopies(this.getCopies() - 1);
+            System.out.println("Sold magazine: " + getTitle());
+        } else
+            System.out.println("Magazine out of stock: " + getTitle());
     }
 }

@@ -1,4 +1,4 @@
-package lab3;
+ package lab3;
 
 import lab3.entities.ProductEntity;
 import lab3.repositories.InMemoryProductRepository;

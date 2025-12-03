@@ -4,15 +4,19 @@ import lab2.pojos.Publication;
 
 public class FakeBook extends Publication {
     private String author;
+    private String title;
+    private int copies;
+    private double price;
 
 
     public FakeBook(String title, double price, int copies, String author) {
+        super(title, price, copies);
+        this.author = author;
     }
 
 
     public String getAuthor() { return author; }
     public void setAuthor(String author) { this.author = author; }
-
 
     @Override
     public void initialize() {

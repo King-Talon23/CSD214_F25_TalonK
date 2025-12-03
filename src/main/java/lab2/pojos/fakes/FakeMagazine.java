@@ -9,18 +9,18 @@ public class FakeMagazine extends Publication {
     private int orderQty;
     private LocalDate currentIssue;
 
+    public FakeMagazine(int orderQty, LocalDate date) {
+        this.orderQty = orderQty;
+        this.currentIssue = date;
 
-
-    public FakeMagazine(String title, double price, int copies, LocalDate date) {
     }
-
-
     public int getOrderQty() { return orderQty; }
     public void setOrderQty(int orderQty) { this.orderQty = orderQty; }
 
 
     public LocalDate getCurrentIssue() { return currentIssue; }
     public void setCurrentIssue(LocalDate currentIssue) { this.currentIssue = currentIssue; }
+
 
 
     @Override
